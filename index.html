@@ -1,442 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenneth | Electronics and Computer Engineer</title>
-    <style>
-        /* CSS Reset & Variables */
-        :root {
-            --bg-base: #0a0a0a;
-            --bg-surface: #171717;
-            --bg-surface-hover: #262626;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a3a3a3;
-            --accent: #3b82f6; /* Bright Blue */
-            --accent-hover: #2563eb;
-            --border: #3f3f46;
-            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg-base);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-        }
-
-        .nav-content {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin-left: 1.5rem;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--accent); }
-
-        /* Container */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 6rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        
-        section:last-of-type { border-bottom: none; }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-        }
-
-        /* Hero Section */
-        #hero {
-            padding: 12rem 0 8rem;
-            animation: fadeIn 1s ease-out;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            #hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-            }
-            .hero-text { order: 1; }
-            .hero-image { order: 2; }
-        }
-
-        .status-badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        #hero h1 {
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            letter-spacing: -1.5px;
-        }
-
-        #hero p {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 2rem;
-        }
-
-        .cta-buttons { display: flex; gap: 1rem; }
-        @media (max-width: 900px) { .cta-buttons { justify-content: center; } }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: #fff;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-primary:hover { background-color: var(--accent-hover); }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--bg-surface);
-            border-color: var(--text-secondary);
-        }
-
-        /* Hero Image Container */
-        .hero-image {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            aspect-ratio: 16 / 9;
-        }
-
-        .hero-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* Education & Skills Split */
-        .split-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-
-        @media (max-width: 768px) {
-            .split-section { grid-template-columns: 1fr; gap: 2rem; }
-        }
-
-        .edu-card {
-            background: var(--bg-surface);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid var(--border);
-        }
-
-        .edu-card h3 { font-size: 1.2rem; margin-bottom: 0.2rem; }
-        .edu-card h4 { color: var(--accent); font-weight: 500; margin-bottom: 1rem; font-size: 1rem;}
-        .coursework { font-size: 0.9rem; color: var(--text-secondary); }
-
-        /* Tech Stack */
-        .skill-group { margin-bottom: 1.5rem; }
-        .skill-group h4 { margin-bottom: 0.5rem; font-size: 0.95rem; color: var(--text-secondary); }
-        .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        
-        .skill-tag {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s, border-color 0.2s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent);
-        }
-
-        .project-card h3 { margin-bottom: 0.5rem; }
-        
-        .project-desc {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .impact-bullet {
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            background: rgba(255,255,255,0.05);
-            padding: 0.5rem 0.8rem;
-            border-left: 3px solid var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        .project-links { margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border); }
-        
-        .project-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            margin-right: 1rem;
-        }
-
-        .project-links a:hover { text-decoration: underline; }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenneth Kinungi — Electronics and Computer Engineer</title>
+  <meta name="description" content="Portfolio of Kenneth Kinungi, Electronics and Computer Engineering student at JKUAT. Projects, skills, and contact information.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <nav>
-        <div class="nav-content">
-            <a href="#" class="nav-logo">Kenneth.</a>
-            <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <div class="container">
-        
-        <section id="hero">
-            <div class="hero-text">
-                <div class="status-badge">Electronics and Computer Engineer</div>
-                <h1>Hey!<br> This is Kenneth. </h1>
-                <p>I'm an ECE student at JKUAT specializing in signals & communication and Embedded Systems and Data Science. I design and analyze systems, program and build IoT systems using Arduino platforms, and am enthusiastic about AI and its application to real-world problems.t</p>
-                <div class="cta-buttons">
-                    <a href="#" class="btn btn-primary">Download Resume</a> 
-                    <a href="https://github.com/M4uwi" target="_blank" class="btn btn-secondary">GitHub Profile</a>
-                </div>
-            </div>
-            
-            <div class="hero-image">
-                <img src="https://towardsdatascience.com/wp-content/uploads/2024/11/1nXCFKq4pqCyG0CQ_t4G-fw@2x-1536x1536.jpeg" alt="A futuristic image of AI and human.">
-            </div>
-        </section>
-
-        <section id="about" class="split-section">
-            
-            <div>
-                <h2 class="section-title">Background</h2>
-                <div class="edu-card">
-                    <h3>Jomo Kenyatta University of Agriculture and Technology</h3>
-                    <h4>B.S. Electronic and Computer Engineering • Expected Dec 2027</h4>
-                    <p class="coursework">
-                        <strong>Relevant Coursework:</strong> Power Systems, Control Engineering, Signals and Communication, Circuit and Network Theory, Digital Electronics.
-                    </p>
-                </div>
-            </div>
-
-            <div>
-                <h2 class="section-title">Tech Stack</h2>
-                
-                <div class="skill-group">
-                    <h4>Languages</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">8086 Assembly</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h4>IoT & Embedded Systems</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Arduino</span>
-                        <span class="skill-tag">Proteus</span>
-                        <span class="skill-tag">Hardware Interfacing</span>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h4>Web & Data</h4>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">PyTorch</span>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Featured Engineering</h2>
-            
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <h3>SHIF Digital Management System</h3>
-                    <div class="skill-tags" style="margin-bottom: 1rem;">
-                        <span class="skill-tag" style="background: transparent; border: none; padding: 0; color: var(--accent);">Python • Flask • MySQL • Bootstrap</span>
-                    </div>
-                    <p class="project-desc">A comprehensive, full-stack web application built using the MVC pattern to digitize health insurance operations for the Social Health Authority (SHA) in Kenya. Features include secure role-based access control, digital claims processing, and simulated M-Pesa premium payments.</p>
-                    <div class="impact-bullet">
-                        <strong>Impact:</strong> Enabled a seamless transition from manual records to a secure 3NF database environment, ensuring strict data integrity with ON DELETE CASCADE constraints.
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank"> &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Personal AI Prompt Library Engine</h3>
-                    <div class="skill-tags" style="margin-bottom: 1rem;">
-                        <span class="skill-tag" style="background: transparent; border: none; padding: 0; color: var(--accent);">Python • CLI • Data Persistence</span>
-                    </div>
-                    <p class="project-desc">Engineered a robust command-line interface application designed to manage, filter, and export a personal library of AI prompts. The tool leverages direct-to-disk flat-file serialization and a custom substring search engine.</p>
-                    <div class="impact-bullet">
-                        <strong>Impact:</strong> Implemented defensive programming logic to intercept fatal crashes and guard local storage integrity against memory structural anomalies.
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank"> &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>8086 Microprocessor Simulation</h3>
-                    <div class="skill-tags" style="margin-bottom: 1rem;">
-                        <span class="skill-tag" style="background: transparent; border: none; padding: 0; color: var(--accent);">Assembly • Proteus</span>
-                    </div>
-                    <p class="project-desc">Simulated advanced microprocessor architecture and hardware-software interfacing using the Intel 8086 alongside 8255 PPI and 8259 PIC components.</p>
-                    <div class="impact-bullet">
-                        <strong>Impact:</strong> Successfully developed and verified assembly logic for LCD interfacing, keypad scanning, and interrupt nesting.
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank">&rarr;</a>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>Remote-Controlled Robotics</h3>
-                    <div class="skill-tags" style="margin-bottom: 1rem;">
-                        <span class="skill-tag" style="background: transparent; border: none; padding: 0; color: var(--accent);">C++ • Arduino • IoT</span>
-                    </div>
-                    <p class="project-desc">Engineered the control logic for a fully remote-controlled robotics platform, prioritizing robust user command execution and streamlined wireless communication.</p>
-                    <div class="impact-bullet">
-                        <strong>Impact:</strong> Optimized the embedded codebase for high responsiveness by isolating remote control operations.
-                    </div>
-                    <div class="project-links">
-                        <a href="#" target="_blank"> &rarr;</a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="#top" class="nav__logo">Kenneth.</a>
+      <nav class="nav__links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <footer>
-        <p>&copy; 2026 Kenneth.</p>
-        <div style="margin-top: 1rem;">
-            <a href="https://github.com/M4uwi" style="color: var(--text-secondary); text-decoration: none; margin: 0 0.5rem;">GitHub</a> • 
-            <a href="https://linkedin.com/in/mauwi-kenneth-kinungi" style="color: var(--text-secondary); text-decoration: none; margin: 0 0.5rem;">LinkedIn</a>
+  <main>
+    <!-- HERO -->
+    <section id="top" class="hero">
+      <div class="hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Electronics & Computer Engineer</p>
+          <h1 class="hero__name">Kenneth Kinungi</h1>
+          <p class="hero__tagline">
+            I design and analyze systems, program IoT devices using Arduino platforms, and build reliable full-stack web applications. Enthusiastic about AI and solving real-world problems.
+          </p>
+
+          <div class="status-badge">
+            <span class="status-dot"></span>
+            Open to internships &amp; New Graduate Opportunities
+          </div>
+
+          <div class="hero__actions">
+            <a href="#projects" class="btn btn--primary">View Projects</a>
+            <a href="Kenneth_Resume_ECE.pdf" class="btn btn--ghost" download="Kenneth_Kinungi_Resume.pdf">Download Resume</a>
+            <a href="#contact" class="btn btn--ghost">Contact Me</a>
+          </div>
         </div>
-    </footer>
 
+        <div class="hero__photo">
+          <img src="Profile Picture.png" alt="Portrait of Kenneth" id="profile-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <p class="section__label">About</p>
+      <div class="section__body about__grid">
+        <div class="about__text">
+          <p>
+            I'm an Electronic and Computer Engineering student at JKUAT specializing in signals, communication, and embedded systems. I like taking a project from a rough hardware schematic or database schema to something people can actually use.
+          </p>
+          <p>
+            Whether I'm writing assembly logic for microprocessors or building secure MVC web applications with Python and MySQL, I focus on clean code, robust architecture, and delivering tangible impact.
+          </p>
+        </div>
+        <div class="about__meta">
+          <dl class="meta-list">
+            <div class="meta-list__row">
+              <dt>Location</dt>
+              <dd>Nairobi, Kenya</dd>
+            </div>
+            <div class="meta-list__row">
+              <dt>University</dt>
+              <dd>JKUAT</dd>
+            </div>
+            <div class="meta-list__row">
+              <dt>Graduating</dt>
+              <dd>Dec 2027</dd>
+            </div>
+            <div class="meta-list__row">
+              <dt>Availability</dt>
+              <dd>Open for opportunities</dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <p class="section__label">Skills</p>
+      <div class="section__body skills__grid">
+        <div class="skill-group">
+          <h3 class="skill-group__title">Languages</h3>
+          <div class="tag-list">
+            <span class="tag">C / C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">8086 Assembly</span>
+            <span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group__title">Embedded & Tools</h3>
+          <div class="tag-list">
+            <span class="tag">Arduino</span>
+            <span class="tag">Proteus</span>
+            <span class="tag">Git</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group__title">Web & Data</h3>
+          <div class="tag-list">
+            <span class="tag">Flask</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">PyTorch</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <p class="section__label">Projects</p>
+      <div class="section__body projects__grid">
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>SHIF Digital Management System</h3>
+            <span class="project-card__lang">Python · Flask · MySQL</span>
+          </div>
+          <p class="project-card__desc">
+            A full-stack web application built using the MVC pattern to digitize health insurance operations for the Social Health Authority (SHA) in Kenya.
+          </p>
+          <ul class="project-card__points">
+            <li>Implemented secure role-based access control and digital claims processing.</li>
+            <li>Designed a 3NF database environment with strict data integrity (ON DELETE CASCADE).</li>
+            <li>Integrated simulated M-Pesa premium payments.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>Personal AI Prompt Library Engine</h3>
+            <span class="project-card__lang">Python · CLI</span>
+          </div>
+          <p class="project-card__desc">
+            A robust command-line interface application designed to manage, filter, and export a personal library of AI prompts.
+          </p>
+          <ul class="project-card__points">
+            <li>Leveraged direct-to-disk flat-file serialization for data persistence.</li>
+            <li>Built a custom substring search engine for rapid retrieval.</li>
+            <li>Implemented defensive programming to intercept fatal crashes and guard storage integrity.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>8086 Microprocessor Simulation</h3>
+            <span class="project-card__lang">Assembly · Proteus</span>
+          </div>
+          <p class="project-card__desc">
+            Simulated advanced microprocessor architecture and hardware-software interfacing using the Intel 8086 alongside 8255 PPI and 8259 PIC components.
+          </p>
+          <ul class="project-card__points">
+            <li>Developed assembly logic for LCD interfacing.</li>
+            <li>Programmed keypad scanning routines.</li>
+            <li>Verified interrupt nesting and hardware synchronization.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>Remote-Controlled Robotics</h3>
+            <span class="project-card__lang">C++ · Arduino</span>
+          </div>
+          <p class="project-card__desc">
+            Engineered the control logic for a fully remote-controlled robotics platform, prioritizing robust user command execution.
+          </p>
+          <ul class="project-card__points">
+            <li>Streamlined wireless communication protocols.</li>
+            <li>Optimized the embedded codebase for high responsiveness.</li>
+            <li>Isolated remote control operations to prevent processing bottlenecks.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <p class="section__label">Experience</p>
+      <div class="section__body">
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3>Electrical Engineering Attache</h3>
+                <span class="timeline__date">May 2025 — Aug 2025</span>
+              </div>
+              <p class="timeline__place">Devki Group of Companies · Ruiru, Kenya</p>
+              <p class="timeline__desc">
+                Collaborated with the electrical team to install and maintain industrial electrical systems, ensuring compliance with safety standards. Diagnosed and replaced defective components, and performed routine preventive maintenance to minimize downtime. Interpreted engineering blueprints and coordinated cross-functional tasks to improve team efficiency.
+              </p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3>Electrical Engineering Attache</h3>
+                <span class="timeline__date">May 2024 — Jul 2024</span>
+              </div>
+              <p class="timeline__place">Kenya Electricity Generating Company (KenGen) · Naivasha, Kenya</p>
+              <p class="timeline__desc">
+                Carried out routine and corrective maintenance on industrial machinery at the geothermal plant to maintain optimal functionality. Diagnosed electrical faults using industry-standard testing instruments and troubleshot heavy industrial machinery to improve operational performance. Installed electrical appliances, fixtures, and distribution systems.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+      <p class="section__label">Education</p>
+      <div class="section__body">
+        <ol class="timeline">
+          <li class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3>B.Sc. Electronic and Computer Engineering</h3>
+                <span class="timeline__date">2022 — 2027 (Expected)</span>
+              </div>
+              <p class="timeline__place">Jomo Kenyatta University of Agriculture and Technology (JKUAT) · Juja, Kiambu</p>
+              <p class="timeline__desc">
+                <strong>Relevant coursework:</strong> Circuit Theory, Digital Systems, Microprocessors & Embedded Systems, Power Electronics, Database Systems, Computer Networks[cite: 7]. <br><br>
+                <strong>Involvement:</strong> Active participant in Toastmasters International, focusing on communication and leadership development.
+              </p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__marker"></div>
+            <div class="timeline__content">
+              <div class="timeline__top">
+                <h3>Kenya Certificate of Secondary Education (KCSE)</h3>
+                <span class="timeline__date">2018 — May 2022</span>
+              </div>
+              <p class="timeline__place">The Alliance High School · Kiambu, Kenya</p>
+              <p class="timeline__desc">
+                Graduated with a strong foundation in mathematics and sciences, building the prerequisite knowledge for pursuing an advanced engineering degree.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section--contact">
+      <p class="section__label">Contact</p>
+      <div class="section__body">
+        <h2 class="contact__heading">Let's work together.</h2>
+        <p class="contact__text">
+          I'm actively looking for an internship and new graduate positions. Feel free to
+          reach out about opportunities, collaborations, or just to talk
+          about code and hardware.
+        </p>
+        <div class="contact__links">
+          <a href="mailto:kinungikenneth@gmail.com" class="btn btn--primary">kinungikenneth@gmail.com</a>
+          <a href="https://github.com/M4uwi" class="btn btn--ghost" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/mauwi-kenneth-kinungi" class="btn btn--ghost" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; <span id="year"></span> Kenneth Kinungi.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
