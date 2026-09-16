@@ -64,7 +64,7 @@
             I'm an Electronic and Computer Engineering student at JKUAT specializing in signals, communication, and embedded systems. I like taking a project from a rough hardware schematic or database schema to something people can actually use.
           </p>
           <p>
-            Whether I'm writing assembly logic for microprocessors or building secure MVC web applications with Python and MySQL, I focus on clean code, robust architecture, and delivering tangible impact.
+            Whether I'm writing assembly logic for microprocessors, modeling data with Scikit-Learn, or building secure MVC web applications with Python and MySQL, I focus on clean code, robust architecture, and delivering tangible impact.
           </p>
         </div>
         <div class="about__meta">
@@ -107,18 +107,18 @@
           <h3 class="skill-group__title">Embedded & Tools</h3>
           <div class="tag-list">
             <span class="tag">Arduino</span>
-            <span class="tag">Proteus</span>
+            <span class="tag">ESP32</span>
             <span class="tag">Git</span>
             <span class="tag">Docker</span>
           </div>
         </div>
         <div class="skill-group">
-          <h3 class="skill-group__title">Web & Data</h3>
+          <h3 class="skill-group__title">Web, ML & Data</h3>
           <div class="tag-list">
+            <span class="tag">Scikit-Learn</span>
+            <span class="tag">Pandas / NumPy</span>
             <span class="tag">Flask</span>
             <span class="tag">MySQL</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">PyTorch</span>
           </div>
         </div>
       </div>
@@ -128,6 +128,34 @@
     <section id="projects" class="section">
       <p class="section__label">Projects</p>
       <div class="section__body projects__grid">
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>Spotify Recommendation Engine</h3>
+            <span class="project-card__lang">Python · Scikit-Learn</span>
+          </div>
+          <p class="project-card__desc">
+            An end-to-end machine learning music recommendation system utilizing content-based filtering and cosine similarity across acoustic feature vectors.
+          </p>
+          <ul class="project-card__points">
+            <li>Designed data preprocessing pipelines to clean, scale, and normalize audio metrics (valence, energy, danceability).</li>
+            <li>Built interactive cluster visualizations using Plotly to analyze multi-dimensional user preferences.</li>
+          </ul>
+        </article>
+
+        <article class="project-card">
+          <div class="project-card__head">
+            <h3>Global Epidemic EDA Dashboard</h3>
+            <span class="project-card__lang">Python · Pandas · Plotly</span>
+          </div>
+          <p class="project-card__desc">
+            Exploratory data analysis modeling global demographic changes and infectious disease transmission patterns across multi-decadal datasets.
+          </p>
+          <ul class="project-card__points">
+            <li>Structured the analysis using the CRISP-DM framework to translate complex epidemiological datasets into actionable insights.</li>
+            <li>Conducted correlation analyses and hypothesis testing to extract key statistical drivers behind outbreak velocity.</li>
+          </ul>
+        </article>
 
         <article class="project-card">
           <div class="project-card__head">
@@ -176,16 +204,15 @@
 
         <article class="project-card">
           <div class="project-card__head">
-            <h3>Remote-Controlled Robotics</h3>
-            <span class="project-card__lang">C++ · Arduino</span>
+            <h3>ESP32 Autonomous & WiFi Rover</h3>
+            <span class="project-card__lang">C++ · ESP32</span>
           </div>
           <p class="project-card__desc">
-            Engineered the control logic for a fully remote-controlled robotics platform, prioritizing robust user command execution.
+            Engineered the control logic for a dual-mode smart rover utilizing an ESP32 microcontroller for real-time obstacle avoidance and autonomous sensor navigation.
           </p>
           <ul class="project-card__points">
-            <li>Streamlined wireless communication protocols.</li>
-            <li>Optimized the embedded codebase for high responsiveness.</li>
-            <li>Isolated remote control operations to prevent processing bottlenecks.</li>
+            <li>Configured multi-sensor data pipelines combining ultrasonic distance measurement and color recognition.</li>
+            <li>Built a low-latency WiFi control interface and integrated an OLED display for live sensor readout.</li>
           </ul>
         </article>
 
@@ -241,7 +268,7 @@
               </div>
               <p class="timeline__place">Jomo Kenyatta University of Agriculture and Technology (JKUAT) · Juja, Kiambu</p>
               <p class="timeline__desc">
-                <strong>Relevant coursework:</strong> Circuit Theory, Digital Systems, Microprocessors & Embedded Systems, Power Electronics, Database Systems, Computer Networks[cite: 7]. <br><br>
+                <strong>Relevant coursework:</strong> Circuit Theory, Digital Systems, Microprocessors & Embedded Systems, Power Electronics, Database Systems, Computer Networks. <br><br>
                 <strong>Involvement:</strong> Active participant in Toastmasters International, focusing on communication and leadership development.
               </p>
             </div>
